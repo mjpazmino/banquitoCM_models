@@ -9,6 +9,11 @@
   <folder name="Other" id="id-1c4fc663f87648f09c738b76104bb05d" type="other"/>
   <folder name="Relations" id="id-449dcc1556494152ac68c0ffb6136f22" type="relations"/>
   <folder name="Views" id="id-572a85c38231403f94b07480dee333fc" type="diagrams">
-    <element xsi:type="archimate:ArchimateDiagramModel" name="Default View" id="id-5a3c2a91936a4a05b8d4bd04cdcad290"/>
+    <element xsi:type="archimate:ArchimateDiagramModel" name="Default View" id="id-5a3c2a91936a4a05b8d4bd04cdcad290">
+      <child xsi:type="archimate:Note" id="id-b57a9d3f0872440a8c43e460f1c269cb" textAlignment="1">
+        <bounds x="343" y="48" width="185" height="80"/>
+        <content>BanQuito CM - CM Clients</content>
+      </child>
+    </element>
   </folder>
 </archimate:model>
