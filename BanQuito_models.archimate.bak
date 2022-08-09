@@ -9,10 +9,24 @@
     <element xsi:type="archimate:ApplicationComponent" name="CoreCustomer" id="id-d4d779502bc042f881699f9fe91cb906"/>
     <element xsi:type="archimate:ApplicationComponent" name="CMPaymentsCollections" id="id-f748de32cae54534aeb825c8be56032d"/>
     <element xsi:type="archimate:ApplicationComponent" name="CMAccounting" id="id-eba23eebd1fc4c23b1508e964cfc9b6a"/>
-    <element xsi:type="archimate:ApplicationService" name="Accounts" id="id-372d9c4365e544ceb19851d5c539cea5"/>
-    <element xsi:type="archimate:ApplicationService" name="Company" id="id-a3f27ff4d73149809cbde54f828a3fe7"/>
-    <element xsi:type="archimate:ApplicationService" name="Email" id="id-5fab82dec1164022b3416e1c510f1f48"/>
-    <element xsi:type="archimate:ApplicationService" name="User" id="id-7144b5e9e0ce45ecbcb0aad0edf00863"/>
+    <element xsi:type="archimate:ApplicationService" name="Account" id="id-372d9c4365e544ceb19851d5c539cea5">
+      <documentation>Servicio que permite registrar cuentas en el Cash Management, modificarlas y listarlas. </documentation>
+      <property key="URL" value="/account"/>
+      <property key="METHODS" value="POST, PUT, GET"/>
+    </element>
+    <element xsi:type="archimate:ApplicationService" name="Company" id="id-a3f27ff4d73149809cbde54f828a3fe7">
+      <documentation>Servicio que permite crear y buscar (por RUC, nombre o internalId) una empresa registrada en el Cash Management</documentation>
+      <property key="URL" value="/company"/>
+      <property key="METHODS" value="POST, GET"/>
+    </element>
+    <element xsi:type="archimate:ApplicationService" name="Email" id="id-5fab82dec1164022b3416e1c510f1f48">
+      <documentation>Servicio que maneja el envío correos al usuario representante legal al momento de registrar la empresa en el Cash Management.</documentation>
+    </element>
+    <element xsi:type="archimate:ApplicationService" name="User" id="id-7144b5e9e0ce45ecbcb0aad0edf00863">
+      <documentation>Servicio que permite crear, modificar, bloquear y listar usuarios además de validar el inicio de sesión al sistema de Cash Management </documentation>
+      <property key="URL" value="/user"/>
+      <property key="METHODS" value="POST, PUT, GET"/>
+    </element>
     <element xsi:type="archimate:DataObject" name="clients" id="id-5dc220af47cf4ab1b42870d82281a717"/>
     <element xsi:type="archimate:ApplicationService" name="PaymentOrder" id="id-ae49ce78e49b446abfa5043651924dbe"/>
     <element xsi:type="archimate:ApplicationService" name="Payment" id="id-c793d88385a04b17b3e7f1fe597a6bbd"/>
@@ -43,28 +57,31 @@
     </element>
   </folder>
   <folder name="Technology &amp; Physical" id="id-e792f25311234673b63888558f81d533" type="technology">
-    <element xsi:type="archimate:SystemSoftware" name="Kubernetes Engine - Free" id="id-1d233921cd1941e78c0b6b31c55adccd"/>
+    <element xsi:type="archimate:SystemSoftware" name="Kubernetes Engine - Free" id="id-1d233921cd1941e78c0b6b31c55adccd">
+      <documentation>Sistema de código libre empleado para el despliegue de CMClients mediante contenedores</documentation>
+    </element>
     <element xsi:type="archimate:Node" name="POD" id="id-6d85d55a0f244e09847b1395ddc7011f"/>
-    <element xsi:type="archimate:SystemSoftware" name="Mongo Atlas DB" id="id-7db8204c681442dd8ff4d817c9fa1d63"/>
+    <element xsi:type="archimate:SystemSoftware" name="Mongo Atlas DB" id="id-7db8204c681442dd8ff4d817c9fa1d63">
+      <documentation>Servicio de Cloud Database que permite la administración de la base de datos clients</documentation>
+    </element>
     <element xsi:type="archimate:SystemSoftware" name="PostgreSQL DB" id="id-54d9e93b38c44e27938acf30b070f803"/>
     <element xsi:type="archimate:SystemSoftware" name="Atlas Mongo DB" id="id-6ad44a769d734e1fb6c8580321bd9acc"/>
   </folder>
   <folder name="Motivation" id="id-84681d2a4dc4479eb5e01a592be5316f" type="motivation"/>
   <folder name="Implementation &amp; Migration" id="id-3a0b8100fed14948ab0cc0318fad1471" type="implementation_migration"/>
   <folder name="Other" id="id-1c4fc663f87648f09c738b76104bb05d" type="other">
-    <element xsi:type="archimate:Location" name="Google Cloud Platform" id="id-6d2acb596c344fb1b947f96bf7aa4992"/>
-    <element xsi:type="archimate:Location" name="Location" id="id-81bf07164dbe41a78fd914dafa6519ad"/>
-    <element xsi:type="archimate:Location" name="Location" id="id-7ed8c63c76bf41a09ced7a11bf411c32"/>
-    <element xsi:type="archimate:Location" name="Microsoft Azure Cloud" id="id-2c0cd6ebff6642ce92995eba89de2b18"/>
+    <element xsi:type="archimate:Location" name="Google Cloud Platform" id="id-6d2acb596c344fb1b947f96bf7aa4992">
+      <documentation>Servicio de infraestructura en la nube que nos permite alojar el microservicio CMClients </documentation>
+    </element>
+    <element xsi:type="archimate:Location" name="Microsoft Azure Cloud" id="id-2c0cd6ebff6642ce92995eba89de2b18">
+      <documentation>Servicio de infraestructura en la nube que nos permite alojar la base de datos clients en MongoDB</documentation>
+    </element>
     <element xsi:type="archimate:Location" name="Google Cloud Platform" id="id-9a66f929924046e7b3960e2354fe8c91"/>
     <element xsi:type="archimate:Location" name="Microsoft Azure Cloud" id="id-8177c24622c94d06a5280bbc7ae956b5"/>
     <element xsi:type="archimate:Location" name="Google Cloud Platform" id="id-1ec1d2c95d254e9ba13b681a5e102cbb"/>
-    <element xsi:type="archimate:Location" name="Location" id="id-bb7284db2e04457a853dd5f6ef55a4fb"/>
     <element xsi:type="archimate:Location" name="Amazon Web Services Cloud" id="id-a082fce11d83401c85efb2020d86e8e9"/>
-    <element xsi:type="archimate:Location" name="Location" id="id-359dfadd4c6647a28d1600eae9458ca0"/>
     <element xsi:type="archimate:Location" name="Google Cloud Platform" id="id-f375ee17b6594a018062a34bec2a666b"/>
     <element xsi:type="archimate:Location" name="Microsoft Azure Cloud" id="id-8a3b4e1757c64c5eb80da3dd6633c008"/>
-    <element xsi:type="archimate:Grouping" name="Grouping" id="id-13f00d6a1f1a45d8aa2feb2de3b7d7dd"/>
     <element xsi:type="archimate:Location" name="Microsoft Azure Cloud" id="id-45490e26c95548389ff3980466054b4e"/>
     <element xsi:type="archimate:Location" name="Google Cloud Platform" id="id-fc7979a07cf74a4eb2d9de0761db93bb"/>
   </folder>
@@ -101,7 +118,6 @@
     <element xsi:type="archimate:AssociationRelationship" id="id-d1c93e37dd814a7c9657dd294f5c23ba" source="id-f748de32cae54534aeb825c8be56032d" target="id-eba23eebd1fc4c23b1508e964cfc9b6a"/>
     <element xsi:type="archimate:AssociationRelationship" id="id-17af7f1c2c744254911ed77e1d0d410f" source="id-c995a9bb91a642a18a1386bd6b356ca9" target="id-06a879db741b4e2bbe9e61be764e7126"/>
     <element xsi:type="archimate:CompositionRelationship" id="id-77ee06b165a5448cbc812c6fb4923d38" source="id-9a66f929924046e7b3960e2354fe8c91" target="id-f748de32cae54534aeb825c8be56032d"/>
-    <element xsi:type="archimate:CompositionRelationship" id="id-e0cc806e8c944ca989e78a724c2a0253" source="id-9a66f929924046e7b3960e2354fe8c91" target="id-13f00d6a1f1a45d8aa2feb2de3b7d7dd"/>
     <element xsi:type="archimate:CompositionRelationship" id="id-3a847609b6f74519bbc1850a604a2847" source="id-9a66f929924046e7b3960e2354fe8c91" target="id-1d233921cd1941e78c0b6b31c55adccd"/>
     <element xsi:type="archimate:RealizationRelationship" id="id-3eca46f0516d43068d1066452845d133" source="id-6d85d55a0f244e09847b1395ddc7011f" target="id-f748de32cae54534aeb825c8be56032d"/>
     <element xsi:type="archimate:RealizationRelationship" id="id-eaef5a0ce7b540109a7a9599b0fdcac8" source="id-f748de32cae54534aeb825c8be56032d" target="id-be4eed77a00049e097907ea38617eb8b"/>
@@ -262,18 +278,16 @@
     <folder name="CMClients" id="id-29061411ce88434ebd4cd2d374e8d87a">
       <element xsi:type="archimate:ArchimateDiagramModel" name="CMClients - Layered" id="id-bca1ec0bacf247d89f280ad566a3737d">
         <child xsi:type="archimate:DiagramObject" id="id-936edbdb68894e2fbf6262cfb9715cd5" archimateElement="id-6d2acb596c344fb1b947f96bf7aa4992">
-          <bounds x="120" y="72" width="601" height="409"/>
+          <bounds x="180" y="72" width="469" height="409"/>
           <sourceConnection xsi:type="archimate:Connection" id="id-b881385db8bf41129f5089811066f3c1" source="id-936edbdb68894e2fbf6262cfb9715cd5" target="id-8f0ce248c760412e899c4878bd66e930" archimateRelationship="id-34a8bf106fd145858f8b560fcfd16385"/>
           <sourceConnection xsi:type="archimate:Connection" id="id-95aa2518593c4a779f191341c187da78" source="id-936edbdb68894e2fbf6262cfb9715cd5" target="id-aae9f0b625c5452bb60f0a901a90951e" archimateRelationship="id-5a921fe318424f7bafb58e499ebb8304"/>
           <sourceConnection xsi:type="archimate:Connection" id="id-b0b66ff04106441388451df65004f4ca" source="id-936edbdb68894e2fbf6262cfb9715cd5" target="id-10fba44837c2456c805ef4eda29e999d" archimateRelationship="id-93922bceefa247578ebe0eb50561d294"/>
-          <sourceConnection xsi:type="archimate:Connection" id="id-cb66003d6c55448691d95e9156dec3d0" source="id-936edbdb68894e2fbf6262cfb9715cd5" target="id-4ecd4f90ad304dbcadcc58ac28f21fd9" archimateRelationship="id-61d5887a00284d64bef270885cd77ac5"/>
           <sourceConnection xsi:type="archimate:Connection" id="id-f00f9fa14b794ee7aa6a8cd85c21c7f6" source="id-936edbdb68894e2fbf6262cfb9715cd5" target="id-b2d5c254a7f840cca45ed231878c19d5" archimateRelationship="id-b7f2c500bb924fdba0c6ff24f4419bdb"/>
           <sourceConnection xsi:type="archimate:Connection" id="id-87f771bc485b4eada44a88b2174ff2c1" source="id-936edbdb68894e2fbf6262cfb9715cd5" target="id-d4818893394347b3b9fd183295664211" archimateRelationship="id-0b4accea1a704609a078f8e79b2f3fb0"/>
           <child xsi:type="archimate:DiagramObject" id="id-8f0ce248c760412e899c4878bd66e930" targetConnections="id-b881385db8bf41129f5089811066f3c1 id-2c1796ecf3834ea881a558806a78145d" archimateElement="id-06a879db741b4e2bbe9e61be764e7126">
-            <bounds x="240" y="192" width="120" height="55"/>
+            <bounds x="180" y="192" width="120" height="55"/>
             <sourceConnection xsi:type="archimate:Connection" id="id-39092538b75e4bf5b3a6891d5a41449d" source="id-8f0ce248c760412e899c4878bd66e930" target="id-aae9f0b625c5452bb60f0a901a90951e" archimateRelationship="id-dd717471e68146a9acb079644cfbb890"/>
             <sourceConnection xsi:type="archimate:Connection" id="id-b1cf003d968841f798c9790ddbe16469" source="id-8f0ce248c760412e899c4878bd66e930" target="id-10fba44837c2456c805ef4eda29e999d" archimateRelationship="id-ca2ce480c99b4ba8858b5291d02d2672"/>
-            <sourceConnection xsi:type="archimate:Connection" id="id-0809ed8c43fd47539186b3577de2da18" source="id-8f0ce248c760412e899c4878bd66e930" target="id-4ecd4f90ad304dbcadcc58ac28f21fd9" archimateRelationship="id-a0851e645ccc48eb84b4e9024d193814"/>
             <sourceConnection xsi:type="archimate:Connection" id="id-588c78f13af24632a6ff309a0119c60b" source="id-8f0ce248c760412e899c4878bd66e930" target="id-b2d5c254a7f840cca45ed231878c19d5" archimateRelationship="id-5a0600a1e1de4b89851b594fd2390623"/>
             <sourceConnection xsi:type="archimate:Connection" id="id-9845b5724d8b4b32a87500bd3239f10e" source="id-8f0ce248c760412e899c4878bd66e930" target="id-67cd9717dd034d27995627f4356a14cd" archimateRelationship="id-91bfe3c3d9da49758261262c5b9f7f1a"/>
           </child>
@@ -281,16 +295,13 @@
             <bounds x="12" y="60" width="120" height="55"/>
           </child>
           <child xsi:type="archimate:DiagramObject" id="id-10fba44837c2456c805ef4eda29e999d" targetConnections="id-b0b66ff04106441388451df65004f4ca id-b1cf003d968841f798c9790ddbe16469" archimateElement="id-a3f27ff4d73149809cbde54f828a3fe7">
-            <bounds x="168" y="60" width="120" height="55"/>
-          </child>
-          <child xsi:type="archimate:DiagramObject" id="id-4ecd4f90ad304dbcadcc58ac28f21fd9" targetConnections="id-cb66003d6c55448691d95e9156dec3d0 id-0809ed8c43fd47539186b3577de2da18" archimateElement="id-5fab82dec1164022b3416e1c510f1f48">
-            <bounds x="312" y="60" width="120" height="55"/>
+            <bounds x="180" y="60" width="120" height="55"/>
           </child>
           <child xsi:type="archimate:DiagramObject" id="id-b2d5c254a7f840cca45ed231878c19d5" targetConnections="id-f00f9fa14b794ee7aa6a8cd85c21c7f6 id-588c78f13af24632a6ff309a0119c60b" archimateElement="id-7144b5e9e0ce45ecbcb0aad0edf00863">
-            <bounds x="456" y="60" width="120" height="55"/>
+            <bounds x="324" y="60" width="120" height="55"/>
           </child>
           <child xsi:type="archimate:DiagramObject" id="id-d4818893394347b3b9fd183295664211" targetConnections="id-87f771bc485b4eada44a88b2174ff2c1" archimateElement="id-1d233921cd1941e78c0b6b31c55adccd">
-            <bounds x="204" y="288" width="207" height="97"/>
+            <bounds x="144" y="288" width="207" height="97"/>
             <sourceConnection xsi:type="archimate:Connection" id="id-ecf3540bff3c4392937d5700d6540223" source="id-d4818893394347b3b9fd183295664211" target="id-4263ce7ec8564435ba62e13b9158b7e3" archimateRelationship="id-4461634fb0854d2191c2401dec60aeee"/>
             <child xsi:type="archimate:DiagramObject" id="id-4263ce7ec8564435ba62e13b9158b7e3" targetConnections="id-ecf3540bff3c4392937d5700d6540223" archimateElement="id-6d85d55a0f244e09847b1395ddc7011f">
               <bounds x="48" y="36" width="120" height="55"/>
@@ -299,7 +310,7 @@
           </child>
         </child>
         <child xsi:type="archimate:DiagramObject" id="id-6de560e89c384a58a0e0036e379eade5" archimateElement="id-2c0cd6ebff6642ce92995eba89de2b18">
-          <bounds x="876" y="360" width="205" height="193"/>
+          <bounds x="756" y="336" width="205" height="193"/>
           <sourceConnection xsi:type="archimate:Connection" id="id-37f05ed259004d03ac893f0b235ebd0c" source="id-6de560e89c384a58a0e0036e379eade5" target="id-67cd9717dd034d27995627f4356a14cd" archimateRelationship="id-f0170a5fb0344b1c8756ba4784dda6f1"/>
           <sourceConnection xsi:type="archimate:Connection" id="id-29334f2ff8ab44cd8e47bc8bc60359b3" source="id-6de560e89c384a58a0e0036e379eade5" target="id-ce37585360ce4deea4411a605db287b1" archimateRelationship="id-c19dc914dda744678181c67f7ca6b180"/>
           <child xsi:type="archimate:DiagramObject" id="id-67cd9717dd034d27995627f4356a14cd" targetConnections="id-37f05ed259004d03ac893f0b235ebd0c id-9845b5724d8b4b32a87500bd3239f10e" archimateElement="id-5dc220af47cf4ab1b42870d82281a717">
@@ -375,7 +386,7 @@
         </child>
       </element>
     </folder>
-    <element xsi:type="archimate:ArchimateDiagramModel" name="Banco BanQuito General" id="id-5a3c2a91936a4a05b8d4bd04cdcad290">
+    <element xsi:type="archimate:ArchimateDiagramModel" name="Banco BanQuito General - Cooperation" id="id-5a3c2a91936a4a05b8d4bd04cdcad290">
       <child xsi:type="archimate:Note" id="id-7dc611d70ed742338e0084b23298b7cc" font="1|Segoe UI|16.2|1|WINDOWS|1|-27|0|0|0|700|0|0|0|0|3|2|1|34|Segoe UI" fillColor="#8080c0" textPosition="2">
         <bounds x="120" y="12" width="841" height="73"/>
         <content>BANCO BANQUITO - GENERAL&#xD;
