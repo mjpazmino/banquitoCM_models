@@ -9,7 +9,9 @@
       <documentation>Microservicio que permite gestionar usuarios, empresas y cuentas dentro del sistema de cash management</documentation>
     </element>
     <element xsi:type="archimate:ApplicationComponent" name="CoreCustomer" id="id-d4d779502bc042f881699f9fe91cb906"/>
-    <element xsi:type="archimate:ApplicationComponent" name="CMPaymentsCollections" id="id-f748de32cae54534aeb825c8be56032d"/>
+    <element xsi:type="archimate:ApplicationComponent" name="CMPaymentsCollections" id="id-f748de32cae54534aeb825c8be56032d">
+      <documentation>Microservicio que gestiona el Cash Management</documentation>
+    </element>
     <element xsi:type="archimate:ApplicationComponent" name="CMAccounting" id="id-eba23eebd1fc4c23b1508e964cfc9b6a"/>
     <element xsi:type="archimate:ApplicationService" name="Account" id="id-372d9c4365e544ceb19851d5c539cea5">
       <documentation>Servicio que permite registrar cuentas en el Cash Management, modificarlas y listarlas. </documentation>
@@ -35,13 +37,40 @@
 - Empresas &#xD;
 - Usuarios </documentation>
     </element>
-    <element xsi:type="archimate:ApplicationService" name="PaymentOrder" id="id-ae49ce78e49b446abfa5043651924dbe"/>
-    <element xsi:type="archimate:ApplicationService" name="Payment" id="id-c793d88385a04b17b3e7f1fe597a6bbd"/>
-    <element xsi:type="archimate:ApplicationService" name="ServiceOffered" id="id-be4eed77a00049e097907ea38617eb8b"/>
-    <element xsi:type="archimate:ApplicationService" name="ServicePayment" id="id-fb9518ba635d47a3b6d0ae74be090f37"/>
-    <element xsi:type="archimate:ApplicationService" name="CollectionOrder" id="id-8862567d62c2447b9cf61b8c436f7371"/>
-    <element xsi:type="archimate:ApplicationService" name="Collection" id="id-01dcf2ecd11d46218857adab9ab824b6"/>
-    <element xsi:type="archimate:DataObject" name="PaymentsAndCollections" id="id-53c229238326493d800cdcb171d79fd6"/>
+    <element xsi:type="archimate:ApplicationService" name="PaymentOrder" id="id-ae49ce78e49b446abfa5043651924dbe">
+      <documentation> Servicio que permite registrar, listar y aprobar órdenes de pago en el Cash Management. Adicionalmente permite validar la carga de archivos CSV mismos que servirán para la creación de órdenes.</documentation>
+      <property key="URL" value="paymentOrder"/>
+      <property key="METHODS" value="GET, POST, PUT"/>
+    </element>
+    <element xsi:type="archimate:ApplicationService" name="Payment" id="id-c793d88385a04b17b3e7f1fe597a6bbd">
+      <documentation>Servicio que permite registrar, listar y aprobar pagos en el Cash Management. Adicionalmente permite realizar el pago de las órdenes ligadas a un pago específico.</documentation>
+      <property key="URL" value="/payment"/>
+      <property key="METHODS" value="GET, POST, PUT"/>
+    </element>
+    <element xsi:type="archimate:ApplicationService" name="ServiceOffered" id="id-be4eed77a00049e097907ea38617eb8b">
+      <documentation>Servicio que permite registrar, listar, aprobar y pagar servicios en el Cash Management.&#xD;
+</documentation>
+      <property key="URL" value="/serviceOffered"/>
+      <property key="METHODS" value="GET, POST, PUT"/>
+    </element>
+    <element xsi:type="archimate:ApplicationService" name="ServicePayment" id="id-fb9518ba635d47a3b6d0ae74be090f37">
+      <property key="URL" value="/servicePayment"/>
+      <property key="METHODS" value="GET, PUT, POST"/>
+    </element>
+    <element xsi:type="archimate:ApplicationService" name="CollectionOrder" id="id-8862567d62c2447b9cf61b8c436f7371">
+      <documentation>Servicio que permite cargar las cuentas donde se gestionará los cobros, recibir datos desde archivos externos csv, realizar cobros recurrentes, y pagos de los cobros asignados, haciendo uso de mensajería de datos me Kafka para realizar la transacción en el Core Banquito.</documentation>
+      <property key="URL" value="/collectionorder"/>
+      <property key="METHODS" value="GET, POST, PUT"/>
+    </element>
+    <element xsi:type="archimate:ApplicationService" name="Collection" id="id-01dcf2ecd11d46218857adab9ab824b6">
+      <documentation>Servicios que permite configurar un cobro: servicio a cobrar, cuenta destinatario, lo realiza cada empresa.</documentation>
+      <property key="URL" value="/collection"/>
+      <property key="METHODS" value="GET, POST, PUT"/>
+    </element>
+    <element xsi:type="archimate:DataObject" name="PaymentsAndCollections" id="id-53c229238326493d800cdcb171d79fd6">
+      <property key="COLLECTIONS" value="6"/>
+      <property key="NAME" value="PaymentsAndCollections"/>
+    </element>
     <element xsi:type="archimate:ApplicationService" name="AccountFamily" id="id-526bcf2c4c594f41834fd18f502129c4"/>
     <element xsi:type="archimate:ApplicationService" name="Account" id="id-98732292fb304f5a839f6cff218f9685"/>
     <element xsi:type="archimate:ApplicationService" name="FeeSettings" id="id-dcae3e81598344d3a2515fab41f50734"/>
@@ -67,12 +96,19 @@
     <element xsi:type="archimate:SystemSoftware" name="Kubernetes Engine - Free" id="id-1d233921cd1941e78c0b6b31c55adccd">
       <documentation>Sistema de código libre empleado para el despliegue de CMClients mediante contenedores</documentation>
     </element>
-    <element xsi:type="archimate:Node" name="POD" id="id-6d85d55a0f244e09847b1395ddc7011f"/>
+    <element xsi:type="archimate:Node" name="POD" id="id-6d85d55a0f244e09847b1395ddc7011f">
+      <property key="PORT" value="8080"/>
+      <property key="EXPOSITION_TYPE" value="LOADBALANCER"/>
+    </element>
     <element xsi:type="archimate:SystemSoftware" name="Mongo Atlas DB" id="id-7db8204c681442dd8ff4d817c9fa1d63">
       <documentation>Servicio de Cloud Database que permite la administración de la base de datos clients</documentation>
+      <property key="SUBSCRIPTION" value="FREE"/>
+      <property key="VERSION" value="4.1"/>
+      <property key="PORT" value="27017"/>
     </element>
     <element xsi:type="archimate:SystemSoftware" name="PostgreSQL DB" id="id-54d9e93b38c44e27938acf30b070f803"/>
     <element xsi:type="archimate:SystemSoftware" name="Atlas Mongo DB" id="id-6ad44a769d734e1fb6c8580321bd9acc"/>
+    <element xsi:type="archimate:TechnologyInterface" name="Technology Interface" id="id-125f201eadd54f1a9df1b367d6aec790"/>
   </folder>
   <folder name="Motivation" id="id-84681d2a4dc4479eb5e01a592be5316f" type="motivation"/>
   <folder name="Implementation &amp; Migration" id="id-3a0b8100fed14948ab0cc0318fad1471" type="implementation_migration"/>
