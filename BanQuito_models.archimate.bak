@@ -91,6 +91,22 @@
       <property key="URL" value="/customer"/>
       <property key="METHODS" value="POST, PUT, GET"/>
     </element>
+    <element xsi:type="archimate:ApplicationComponent" name="CMAccounting" id="id-cae27c3b2233462f8c5961122a9b8635">
+      <documentation>Microservicio que permite registrar asientos contables, reflejando los movimientos transaccionales dentro del sistema de cash management</documentation>
+    </element>
+    <element xsi:type="archimate:ApplicationService" name="JournalEntry" id="id-9ba2751c4821491c9dddabacb0cf849b">
+      <documentation>Servicio que permite generar asientos contables al existir transacciones realizadas en el CoreAccounts. (Transacciones realizadas por el Microservicio PaymentsAndCollections y por el proceso de cobro de impuestos a cuentas de ahorro). &#xD;
+&#xD;
+</documentation>
+    </element>
+    <element xsi:type="archimate:ApplicationService" name="GeneralLedgerAccount" id="id-8c9b2514b5894962a594e4900b62c048">
+      <documentation>Servicios que permite configurar cuentas de libro mayor necesarias para la creación de asientos contables. </documentation>
+    </element>
+    <element xsi:type="archimate:DataObject" name="Data Object" id="id-d73ce83ba0e54b9e82204c90075b7c07">
+      <documentation>Base de datos para la contabilidad con tablas para almacenar información de:&#xD;
+- Asientos Contables (Journal_Entry)&#xD;
+- Cuentas de Libro Mayor (General_Ledger_Account)</documentation>
+    </element>
   </folder>
   <folder name="Technology &amp; Physical" id="id-e792f25311234673b63888558f81d533" type="technology">
     <element xsi:type="archimate:SystemSoftware" name="Kubernetes Engine - Free" id="id-1d233921cd1941e78c0b6b31c55adccd">
@@ -98,7 +114,7 @@
     </element>
     <element xsi:type="archimate:Node" name="POD" id="id-6d85d55a0f244e09847b1395ddc7011f">
       <property key="PORT" value="8080"/>
-      <property/>
+      <property key="EXPOSITION_TYPE" value="LOADBALANCER"/>
     </element>
     <element xsi:type="archimate:SystemSoftware" name="Mongo Atlas DB" id="id-7db8204c681442dd8ff4d817c9fa1d63">
       <documentation>Servicio de Cloud Database que permite la administración de la base de datos clients</documentation>
@@ -109,6 +125,13 @@
     <element xsi:type="archimate:SystemSoftware" name="PostgreSQL DB" id="id-54d9e93b38c44e27938acf30b070f803"/>
     <element xsi:type="archimate:SystemSoftware" name="Atlas Mongo DB" id="id-6ad44a769d734e1fb6c8580321bd9acc"/>
     <element xsi:type="archimate:TechnologyInterface" name="Technology Interface" id="id-125f201eadd54f1a9df1b367d6aec790"/>
+    <element xsi:type="archimate:SystemSoftware" name="Kubernetes Engine - Free" id="id-7d6a1ae151024689858e49eea6b609ba">
+      <documentation>Sistema de código libre empleado para el despliegue de CMAccounting mediante contenedores</documentation>
+    </element>
+    <element xsi:type="archimate:Node" name="POD" id="id-e866959309b04adcb4e7a0e42a09d89b"/>
+    <element xsi:type="archimate:SystemSoftware" name="System Software" id="id-8dc5e3de182f487d892c4f834444bef9">
+      <documentation>Servicio de Cloud Database que permite la administración de la base de datos Accounting</documentation>
+    </element>
   </folder>
   <folder name="Motivation" id="id-84681d2a4dc4479eb5e01a592be5316f" type="motivation"/>
   <folder name="Implementation &amp; Migration" id="id-3a0b8100fed14948ab0cc0318fad1471" type="implementation_migration"/>
@@ -127,6 +150,12 @@
     <element xsi:type="archimate:Location" name="Microsoft Azure Cloud" id="id-8a3b4e1757c64c5eb80da3dd6633c008"/>
     <element xsi:type="archimate:Location" name="Microsoft Azure Cloud" id="id-45490e26c95548389ff3980466054b4e"/>
     <element xsi:type="archimate:Location" name="Google Cloud Platform" id="id-fc7979a07cf74a4eb2d9de0761db93bb"/>
+    <element xsi:type="archimate:Location" name="Google Cloud Platform" id="id-75fb58e4ccaa4fda8794aa3b6da52e6a">
+      <documentation>Servicio de infraestructura en la nube que nos permite alojar el microservicio CMAccounting</documentation>
+    </element>
+    <element xsi:type="archimate:Location" name="Microsoft Azure Cloud" id="id-f2c54b90edeb4cfeae0342fae4dcaa27">
+      <documentation>Servicio de infraestructura en la nube que nos permite alojar la base de datos Accounting en MongoDB</documentation>
+    </element>
   </folder>
   <folder name="Relations" id="id-449dcc1556494152ac68c0ffb6136f22" type="relations">
     <element xsi:type="archimate:AssociationRelationship" id="id-bed5c52c53824016b15549f459df469e" source="id-bcae1b77e00148a6bd740fcf62e67a41" target="id-c995a9bb91a642a18a1386bd6b356ca9"/>
@@ -205,6 +234,11 @@
     <element xsi:type="archimate:RealizationRelationship" id="id-15c9ec98fa6849ab862b04244798b8f5" source="id-cd9ee87374b34371a22511eadec488c8" target="id-7125c838fb3349f98811887a4462f1d2"/>
     <element xsi:type="archimate:CompositionRelationship" id="id-9600b52b598b46e1a0dec885580f3000" source="id-fc7979a07cf74a4eb2d9de0761db93bb" target="id-1d233921cd1941e78c0b6b31c55adccd"/>
     <element xsi:type="archimate:RealizationRelationship" id="id-9871317aa7b441e78e8e4d942a2d0fcf" source="id-6d85d55a0f244e09847b1395ddc7011f" target="id-cd9ee87374b34371a22511eadec488c8"/>
+    <element xsi:type="archimate:RealizationRelationship" id="id-c63e06cac8574114bafdefa1025d585c" source="id-cae27c3b2233462f8c5961122a9b8635" target="id-9ba2751c4821491c9dddabacb0cf849b"/>
+    <element xsi:type="archimate:RealizationRelationship" id="id-d56d4e2e4d074e6cb9d2c7b12885396f" source="id-cae27c3b2233462f8c5961122a9b8635" target="id-8c9b2514b5894962a594e4900b62c048"/>
+    <element xsi:type="archimate:RealizationRelationship" id="id-49afc2cdfe40458a8290dc1d95d93beb" source="id-e866959309b04adcb4e7a0e42a09d89b" target="id-cae27c3b2233462f8c5961122a9b8635"/>
+    <element xsi:type="archimate:AssociationRelationship" id="id-f491fc2c5878481792e16ead26957761" source="id-8dc5e3de182f487d892c4f834444bef9" target="id-d73ce83ba0e54b9e82204c90075b7c07"/>
+    <element xsi:type="archimate:AssociationRelationship" id="id-2cc96df725444c8e89362451f085ddde" source="id-d73ce83ba0e54b9e82204c90075b7c07" target="id-cae27c3b2233462f8c5961122a9b8635"/>
   </folder>
   <folder name="Views" id="id-572a85c38231403f94b07480dee333fc" type="diagrams">
     <folder name="CoreAccounts" id="id-91aefda939c54c47a71ef34be8332455">
@@ -425,6 +459,46 @@
           <child xsi:type="archimate:DiagramObject" id="id-44ca47e7068548af95e3242c21de5ac2" targetConnections="id-4419869040384e17a99d02f6d74651b2 id-263ff153af6b4a4396087a3e8a70131e" archimateElement="id-53c229238326493d800cdcb171d79fd6">
             <bounds x="35" y="36" width="145" height="55"/>
             <sourceConnection xsi:type="archimate:Connection" id="id-9624d0680de4450c914b2e108bd6f8ae" source="id-44ca47e7068548af95e3242c21de5ac2" target="id-83d77503b38347b8a2e3abd3cb306472" archimateRelationship="id-c886acc23c51459da5ce45e8a517b5d8"/>
+          </child>
+        </child>
+      </element>
+    </folder>
+    <folder name="CMAccounting" id="id-f9605fb3a59b406687d490be1bb67799">
+      <element xsi:type="archimate:ArchimateDiagramModel" name="Accounting - Layered" id="id-a4983a26b0bf44cbbc97b4459b7ce7e0">
+        <child xsi:type="archimate:DiagramObject" id="id-e4d4e053cf45443ca6c6df8d51d99efd" archimateElement="id-75fb58e4ccaa4fda8794aa3b6da52e6a">
+          <bounds x="180" y="24" width="433" height="373"/>
+          <child xsi:type="archimate:DiagramObject" id="id-c5e208b3816749828d74e95e5eff8144" archimateElement="id-7d6a1ae151024689858e49eea6b609ba">
+            <bounds x="120" y="252" width="205" height="109"/>
+            <child xsi:type="archimate:DiagramObject" id="id-33f10c59f51b4abb8575535a97d1317d" archimateElement="id-e866959309b04adcb4e7a0e42a09d89b">
+              <bounds x="48" y="48" width="120" height="55"/>
+              <sourceConnection xsi:type="archimate:Connection" id="id-4444f04f9a0244d8aa8e02f5c7eb9af7" source="id-33f10c59f51b4abb8575535a97d1317d" target="id-8ae2f183b2354490836ba7e2ffb7e3a6" archimateRelationship="id-49afc2cdfe40458a8290dc1d95d93beb"/>
+            </child>
+          </child>
+          <child xsi:type="archimate:DiagramObject" id="id-8ae2f183b2354490836ba7e2ffb7e3a6" targetConnections="id-4444f04f9a0244d8aa8e02f5c7eb9af7 id-d1db5304b1fb4f52acc18f737670940c" archimateElement="id-cae27c3b2233462f8c5961122a9b8635">
+            <bounds x="168" y="168" width="120" height="55"/>
+            <sourceConnection xsi:type="archimate:Connection" id="id-04c12d00afd640b8a224c9aebc402481" source="id-8ae2f183b2354490836ba7e2ffb7e3a6" target="id-eb275147ae154c438de9d0e94228d3c0" archimateRelationship="id-c63e06cac8574114bafdefa1025d585c">
+              <bendpoint startX="-108" startY="-27" endY="81"/>
+            </sourceConnection>
+            <sourceConnection xsi:type="archimate:Connection" id="id-7dfc45b3694b4afe9410b45ac80d69bf" source="id-8ae2f183b2354490836ba7e2ffb7e3a6" target="id-e1cf47bf47264703a12c5d2aede3aaf0" archimateRelationship="id-d56d4e2e4d074e6cb9d2c7b12885396f">
+              <bendpoint startX="108" startY="-27" endX="12" endY="81"/>
+            </sourceConnection>
+          </child>
+          <child xsi:type="archimate:DiagramObject" id="id-eb275147ae154c438de9d0e94228d3c0" targetConnections="id-04c12d00afd640b8a224c9aebc402481" archimateElement="id-9ba2751c4821491c9dddabacb0cf849b">
+            <bounds x="60" y="60" width="120" height="55"/>
+          </child>
+          <child xsi:type="archimate:DiagramObject" id="id-e1cf47bf47264703a12c5d2aede3aaf0" targetConnections="id-7dfc45b3694b4afe9410b45ac80d69bf" archimateElement="id-8c9b2514b5894962a594e4900b62c048">
+            <bounds x="264" y="60" width="120" height="55"/>
+          </child>
+        </child>
+        <child xsi:type="archimate:DiagramObject" id="id-db2c7340df5e417e8c27b7b2370e98ca" archimateElement="id-f2c54b90edeb4cfeae0342fae4dcaa27">
+          <bounds x="696" y="168" width="205" height="217"/>
+          <child xsi:type="archimate:DiagramObject" id="id-4214338d1ace444a9b69610e837dceb7" targetConnections="id-519b781155834ff7baca7421a2c1d626" archimateElement="id-d73ce83ba0e54b9e82204c90075b7c07">
+            <bounds x="48" y="36" width="120" height="55"/>
+            <sourceConnection xsi:type="archimate:Connection" id="id-d1db5304b1fb4f52acc18f737670940c" source="id-4214338d1ace444a9b69610e837dceb7" target="id-8ae2f183b2354490836ba7e2ffb7e3a6" archimateRelationship="id-2cc96df725444c8e89362451f085ddde"/>
+          </child>
+          <child xsi:type="archimate:DiagramObject" id="id-d1d1cade0c904101b97dc98c93434668" archimateElement="id-8dc5e3de182f487d892c4f834444bef9">
+            <bounds x="48" y="132" width="120" height="55"/>
+            <sourceConnection xsi:type="archimate:Connection" id="id-519b781155834ff7baca7421a2c1d626" source="id-d1d1cade0c904101b97dc98c93434668" target="id-4214338d1ace444a9b69610e837dceb7" archimateRelationship="id-f491fc2c5878481792e16ead26957761"/>
           </child>
         </child>
       </element>
