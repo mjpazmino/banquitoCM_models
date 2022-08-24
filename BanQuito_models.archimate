@@ -122,13 +122,15 @@ Generar un reporte dentro de un periodo de tiempo que refleja los asientos conta
     </element>
     <element xsi:type="archimate:DataObject" name="proyectoArquitectura" id="id-0a48ae4d20354c229b740b84b9fe01eb">
       <property key="COLLECTIONS" value="3"/>
+      <property key="NAME" value="proyectoArquitectura"/>
     </element>
     <element xsi:type="archimate:DataObject" name="Clients" id="id-956eeb54ba2f46a0a72a29eec4228777">
       <property key="COLLECTIONS" value="2"/>
+      <property key="NAME" value="Clients"/>
     </element>
     <element xsi:type="archimate:DataObject" name="CMAccounting" id="id-da10947456ae4b79ba8d9cc5afb2dfb7">
       <property key="COLLECTIONS" value="6"/>
-      <property key="NAME" value="PaymentsAndCollections"/>
+      <property key="NAME" value="CMAccouting"/>
     </element>
     <element xsi:type="archimate:DataObject" name="Data Object" id="id-9ff59ed3e57c40efb4f2b663b97c0f29"/>
     <element xsi:type="archimate:DataObject" name="Data Object" id="id-15742ac3a19d4c35b1a8880c36c339ff"/>
