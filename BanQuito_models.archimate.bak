@@ -96,7 +96,7 @@
     </element>
     <element xsi:type="archimate:ApplicationService" name="JournalEntry" id="id-9ba2751c4821491c9dddabacb0cf849b">
       <documentation>Servicio que permite generar asientos contables al existir transacciones realizadas en el CoreAccounts. (Transacciones realizadas por el Microservicio PaymentsAndCollections y por el proceso de cobro de impuestos a cuentas de ahorro). &#xD;
-&#xD;
+Generar un reporte dentro de un periodo de tiempo que refleja los asientos contables y el saldo de las cuentas de mayor que afectan. &#xD;
 </documentation>
     </element>
     <element xsi:type="archimate:ApplicationService" name="GeneralLedgerAccount" id="id-8c9b2514b5894962a594e4900b62c048">

@@ -14,7 +14,7 @@
     </element>
     <element xsi:type="archimate:ApplicationComponent" name="CMAccounting" id="id-eba23eebd1fc4c23b1508e964cfc9b6a"/>
     <element xsi:type="archimate:ApplicationService" name="Account" id="id-372d9c4365e544ceb19851d5c539cea5">
-      <documentation>Servicio que permite registrar cuentas en el Cash Management, modificarlas y listarlas. </documentation>
+      <documentation>Servicio que permite registrar cuentas en el Cash Management, afectar el balance y listarlas</documentation>
       <property key="URL" value="/account"/>
       <property key="METHODS" value="POST, PUT, GET"/>
     </element>
