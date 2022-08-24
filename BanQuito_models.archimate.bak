@@ -588,6 +588,15 @@ Hacia el front de Banquito, asegurados con JWT generado por CMClients</documenta
     <element xsi:type="archimate:RealizationRelationship" id="id-e38c1ea1d46645e3a578b3bf52a8da09" source="id-6f1ada54424d44639dd4ab997424bdf6" target="id-68f5c29d5de146ab8811bf2acacf8318"/>
     <element xsi:type="archimate:ServingRelationship" id="id-443d6fde177348e5bcaf09bb43c45392" source="id-21be908e69924558a19de744b7d74a93" target="id-d123fe5c2ba943fa8e35dac9fcfe6700"/>
     <element xsi:type="archimate:AssignmentRelationship" id="id-830394957ad24935b7b5b1c708063200" source="id-d123fe5c2ba943fa8e35dac9fcfe6700" target="id-e16d14fde0e6470e99d4c0f69dcda097"/>
+    <element xsi:type="archimate:AssociationRelationship" id="id-c1b34740c88342aca79d0ec6e168c6c6" source="id-4686db748d9a43b8873ba238174cfda9" target="id-372d9c4365e544ceb19851d5c539cea5"/>
+    <element xsi:type="archimate:AssociationRelationship" id="id-b42e4fbe4f8d4da9916f0d91c3696deb" source="id-4686db748d9a43b8873ba238174cfda9" target="id-a3f27ff4d73149809cbde54f828a3fe7"/>
+    <element xsi:type="archimate:AssociationRelationship" id="id-6160c6cdc81b4d65b50898eba1f9f0d1" source="id-4686db748d9a43b8873ba238174cfda9" target="id-7144b5e9e0ce45ecbcb0aad0edf00863"/>
+    <element xsi:type="archimate:AssociationRelationship" id="id-c2ce284c324e4b388cfdde9aa9290c32" source="id-372d9c4365e544ceb19851d5c539cea5" target="id-daaf71da67934077b5f58bd75f4c0e11"/>
+    <element xsi:type="archimate:AssociationRelationship" id="id-5ccc3c11eb7a46479a08042d9842c74b" source="id-a3f27ff4d73149809cbde54f828a3fe7" target="id-daaf71da67934077b5f58bd75f4c0e11"/>
+    <element xsi:type="archimate:AssociationRelationship" id="id-78717b88f49845f597458a4cce3735d0" source="id-daaf71da67934077b5f58bd75f4c0e11" target="id-7144b5e9e0ce45ecbcb0aad0edf00863"/>
+    <element xsi:type="archimate:RealizationRelationship" id="id-5dacaefd152e42329432b5ac6a5520c3" source="id-daaf71da67934077b5f58bd75f4c0e11" target="id-a3f27ff4d73149809cbde54f828a3fe7"/>
+    <element xsi:type="archimate:RealizationRelationship" id="id-34c76249e24941fe9351cc5ff88f5047" source="id-daaf71da67934077b5f58bd75f4c0e11" target="id-372d9c4365e544ceb19851d5c539cea5"/>
+    <element xsi:type="archimate:RealizationRelationship" id="id-cc83b898001c4f1bab443cac3fa9c936" source="id-daaf71da67934077b5f58bd75f4c0e11" target="id-7144b5e9e0ce45ecbcb0aad0edf00863"/>
   </folder>
   <folder name="Views" id="id-572a85c38231403f94b07480dee333fc" type="diagrams">
     <folder name="CoreAccounts" id="id-91aefda939c54c47a71ef34be8332455">
@@ -763,10 +772,25 @@ Hacia el front de Banquito, asegurados con JWT generado por CMClients</documenta
           </child>
         </child>
         <child xsi:type="archimate:Group" id="id-0fb4852835624cb99eac96bb4dc450e8" name="Capa de aplicación" textAlignment="1" fillColor="#3eb1c1">
-          <bounds x="346" y="445" width="1297" height="421"/>
+          <bounds x="346" y="444" width="1297" height="421"/>
           <child xsi:type="archimate:DiagramObject" id="id-a5cd0ee84a714684b1875ff8ca000fd3" archimateElement="id-4686db748d9a43b8873ba238174cfda9">
-            <bounds x="180" y="72" width="120" height="55"/>
+            <bounds x="84" y="72" width="120" height="55"/>
             <sourceConnection xsi:type="archimate:Connection" id="id-55af365533f742029785106289620f0f" source="id-a5cd0ee84a714684b1875ff8ca000fd3" target="id-6de85efbc2ad48fab884ec0ab32dda97" archimateRelationship="id-14f84c9be41a46aa858b1d59ada397d7"/>
+          </child>
+          <child xsi:type="archimate:DiagramObject" id="id-f47101233813483391e6eb325fa9e7ee" targetConnections="id-54c97342ee7f4191bfc04896f63d5e99" archimateElement="id-372d9c4365e544ceb19851d5c539cea5">
+            <bounds x="756" y="48" width="120" height="55"/>
+          </child>
+          <child xsi:type="archimate:DiagramObject" id="id-3903a40c0b6a4b97bd28d42935dc1d46" targetConnections="id-da650866d77a4085b01c2d27e57fc265" archimateElement="id-a3f27ff4d73149809cbde54f828a3fe7">
+            <bounds x="744" y="144" width="120" height="55"/>
+          </child>
+          <child xsi:type="archimate:DiagramObject" id="id-c7d8f4a6c3174ce19a30625b57a7d0f3" targetConnections="id-81ffb050f53e4cb390c5908aeb5bbaec" archimateElement="id-7144b5e9e0ce45ecbcb0aad0edf00863">
+            <bounds x="744" y="240" width="120" height="55"/>
+          </child>
+          <child xsi:type="archimate:DiagramObject" id="id-35e7d42407184879b0af947c9b5812a2" targetConnections="id-d139062025f543999387038a45213c35" archimateElement="id-daaf71da67934077b5f58bd75f4c0e11">
+            <bounds x="1020" y="144" width="120" height="55"/>
+            <sourceConnection xsi:type="archimate:Connection" id="id-da650866d77a4085b01c2d27e57fc265" source="id-35e7d42407184879b0af947c9b5812a2" target="id-3903a40c0b6a4b97bd28d42935dc1d46" archimateRelationship="id-5dacaefd152e42329432b5ac6a5520c3"/>
+            <sourceConnection xsi:type="archimate:Connection" id="id-54c97342ee7f4191bfc04896f63d5e99" source="id-35e7d42407184879b0af947c9b5812a2" target="id-f47101233813483391e6eb325fa9e7ee" archimateRelationship="id-34c76249e24941fe9351cc5ff88f5047"/>
+            <sourceConnection xsi:type="archimate:Connection" id="id-81ffb050f53e4cb390c5908aeb5bbaec" source="id-35e7d42407184879b0af947c9b5812a2" target="id-c7d8f4a6c3174ce19a30625b57a7d0f3" archimateRelationship="id-cc83b898001c4f1bab443cac3fa9c936"/>
           </child>
         </child>
         <child xsi:type="archimate:Group" id="id-8f4589568bc64d5ba38361642b9411a5" name="Capa de tecnología" textAlignment="1" fillColor="#a7d3b8">
@@ -781,6 +805,7 @@ Hacia el front de Banquito, asegurados con JWT generado por CMClients</documenta
           <child xsi:type="archimate:DiagramObject" id="id-219b0ac821b040b4bc72ef3f14746d93" targetConnections="id-dca91279532d4dc190a1fa42657f0296" archimateElement="id-d123fe5c2ba943fa8e35dac9fcfe6700">
             <bounds x="408" y="96" width="120" height="55"/>
             <sourceConnection xsi:type="archimate:Connection" id="id-393eb336b6fc4e1592d793e4b4777bfe" source="id-219b0ac821b040b4bc72ef3f14746d93" target="id-150d701d66024a5aa1a0a36e176941b2" archimateRelationship="id-830394957ad24935b7b5b1c708063200"/>
+            <sourceConnection xsi:type="archimate:Connection" id="id-d139062025f543999387038a45213c35" source="id-219b0ac821b040b4bc72ef3f14746d93" target="id-35e7d42407184879b0af947c9b5812a2" archimateRelationship="id-8ae1f8fff0834aa7adbe46d3e222530a"/>
           </child>
         </child>
       </element>
