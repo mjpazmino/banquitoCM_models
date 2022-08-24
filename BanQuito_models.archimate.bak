@@ -158,7 +158,7 @@ Generar un reporte dentro de un periodo de tiempo que refleja los asientos conta
     <element xsi:type="archimate:ApplicationFunction" name="Crear Ordenes de pago" id="id-6f1ada54424d44639dd4ab997424bdf6"/>
     <element xsi:type="archimate:ApplicationFunction" name="Crear Pago" id="id-48e1cd0928674344bbbc7a64f330d773"/>
     <element xsi:type="archimate:ApplicationFunction" name="Obtener Pagos por estado" id="id-c8e017aa6fb341868ec13b8da950109a"/>
-    <element xsi:type="archimate:ApplicationFunction" name="Obtener Ordenes por filtro" id="id-51f561eb313f483292bd11696e0614b7"/>
+    <element xsi:type="archimate:ApplicationFunction" id="id-51f561eb313f483292bd11696e0614b7"/>
     <element xsi:type="archimate:ApplicationComponent" name="Banquito-Front" id="id-4686db748d9a43b8873ba238174cfda9"/>
     <element xsi:type="archimate:ApplicationService" name="Payment" id="id-7344ae20d3084a6097982eccef33d9e2">
       <documentation>Servicio que permite registrar, listar y aprobar pagos en el Cash Management. Adicionalmente permite realizar el pago de las órdenes ligadas a un pago específico.</documentation>
@@ -337,7 +337,7 @@ Hacia el front de Banquito, asegurados con JWT generado por CMClients</documenta
       <property key="PORT" value="8080"/>
       <property key="EXPOSITION_TYPE" value="LOADBALANCER"/>
     </element>
-    <element xsi:type="archimate:Device" name="apache-kafka-series1" id="id-7a44d16bbe684ec9b92171832a932862">
+    <element xsi:type="archimate:Device" id="id-7a44d16bbe684ec9b92171832a932862">
       <property key="S.O" value="Debian"/>
       <property key="IP EXTERNA" value="34.125.80.201"/>
       <property key="IP INTERNA" value="10.182.0.2"/>
@@ -586,6 +586,8 @@ Hacia el front de Banquito, asegurados con JWT generado por CMClients</documenta
     <element xsi:type="archimate:TriggeringRelationship" id="id-a03ce759e8aa45beb2a75aaf7e2a8128" source="id-7a44d16bbe684ec9b92171832a932862" target="id-5b5bb60a8ed24ebb91b10bfc537c3cf6"/>
     <element xsi:type="archimate:RealizationRelationship" id="id-adde77abab184772b3ad70372c3b3d87" source="id-48e1cd0928674344bbbc7a64f330d773" target="id-c0ddccdcb5a3452d8a22db871d8a8037"/>
     <element xsi:type="archimate:RealizationRelationship" id="id-e38c1ea1d46645e3a578b3bf52a8da09" source="id-6f1ada54424d44639dd4ab997424bdf6" target="id-68f5c29d5de146ab8811bf2acacf8318"/>
+    <element xsi:type="archimate:ServingRelationship" id="id-443d6fde177348e5bcaf09bb43c45392" source="id-21be908e69924558a19de744b7d74a93" target="id-d123fe5c2ba943fa8e35dac9fcfe6700"/>
+    <element xsi:type="archimate:AssignmentRelationship" id="id-830394957ad24935b7b5b1c708063200" source="id-d123fe5c2ba943fa8e35dac9fcfe6700" target="id-e16d14fde0e6470e99d4c0f69dcda097"/>
   </folder>
   <folder name="Views" id="id-572a85c38231403f94b07480dee333fc" type="diagrams">
     <folder name="CoreAccounts" id="id-91aefda939c54c47a71ef34be8332455">
@@ -748,6 +750,39 @@ Hacia el front de Banquito, asegurados con JWT generado por CMClients</documenta
           </child>
         </child>
         <documentation>Módulo que permite administrar la información de los clientes (cuentas, empresas y usuarios) del Cash Management</documentation>
+      </element>
+      <element xsi:type="archimate:ArchimateDiagramModel" name="CMClients - Business" id="id-f22b97bb15e3477aa27a0f803da47f46">
+        <child xsi:type="archimate:Group" id="id-854e9c52039a41e9a187091108707a4e" name="Capa de negocio" textAlignment="1" fillColor="#ffff80">
+          <bounds x="346" y="181" width="1309" height="229"/>
+          <child xsi:type="archimate:DiagramObject" id="id-13e1457fd7f340c6b6b988f901585860" archimateElement="id-4d3b58fbee4a4405a70cb5f3e49026c7">
+            <bounds x="180" y="48" width="151" height="55"/>
+            <sourceConnection xsi:type="archimate:Connection" id="id-a1b799dbc1d44a41b700787c702ba373" source="id-13e1457fd7f340c6b6b988f901585860" target="id-6de85efbc2ad48fab884ec0ab32dda97" archimateRelationship="id-21dda1ea42c041c9ba75dcf9ad2f78fe"/>
+          </child>
+          <child xsi:type="archimate:DiagramObject" id="id-6de85efbc2ad48fab884ec0ab32dda97" targetConnections="id-55af365533f742029785106289620f0f id-a1b799dbc1d44a41b700787c702ba373" archimateElement="id-bb1e2d94ddc246b0a132f3bac7965244">
+            <bounds x="180" y="144" width="151" height="55"/>
+          </child>
+        </child>
+        <child xsi:type="archimate:Group" id="id-0fb4852835624cb99eac96bb4dc450e8" name="Capa de aplicación" textAlignment="1" fillColor="#3eb1c1">
+          <bounds x="346" y="445" width="1297" height="421"/>
+          <child xsi:type="archimate:DiagramObject" id="id-a5cd0ee84a714684b1875ff8ca000fd3" archimateElement="id-4686db748d9a43b8873ba238174cfda9">
+            <bounds x="180" y="72" width="120" height="55"/>
+            <sourceConnection xsi:type="archimate:Connection" id="id-55af365533f742029785106289620f0f" source="id-a5cd0ee84a714684b1875ff8ca000fd3" target="id-6de85efbc2ad48fab884ec0ab32dda97" archimateRelationship="id-14f84c9be41a46aa858b1d59ada397d7"/>
+          </child>
+        </child>
+        <child xsi:type="archimate:Group" id="id-8f4589568bc64d5ba38361642b9411a5" name="Capa de tecnología" textAlignment="1" fillColor="#a7d3b8">
+          <bounds x="360" y="912" width="1309" height="181"/>
+          <child xsi:type="archimate:DiagramObject" id="id-150d701d66024a5aa1a0a36e176941b2" targetConnections="id-393eb336b6fc4e1592d793e4b4777bfe" archimateElement="id-e16d14fde0e6470e99d4c0f69dcda097">
+            <bounds x="1032" y="96" width="120" height="55"/>
+          </child>
+          <child xsi:type="archimate:DiagramObject" id="id-cd17d12e7dc246888f51717481631700" archimateElement="id-21be908e69924558a19de744b7d74a93">
+            <bounds x="60" y="24" width="901" height="43"/>
+            <sourceConnection xsi:type="archimate:Connection" id="id-dca91279532d4dc190a1fa42657f0296" source="id-cd17d12e7dc246888f51717481631700" target="id-219b0ac821b040b4bc72ef3f14746d93" archimateRelationship="id-443d6fde177348e5bcaf09bb43c45392"/>
+          </child>
+          <child xsi:type="archimate:DiagramObject" id="id-219b0ac821b040b4bc72ef3f14746d93" targetConnections="id-dca91279532d4dc190a1fa42657f0296" archimateElement="id-d123fe5c2ba943fa8e35dac9fcfe6700">
+            <bounds x="408" y="96" width="120" height="55"/>
+            <sourceConnection xsi:type="archimate:Connection" id="id-393eb336b6fc4e1592d793e4b4777bfe" source="id-219b0ac821b040b4bc72ef3f14746d93" target="id-150d701d66024a5aa1a0a36e176941b2" archimateRelationship="id-830394957ad24935b7b5b1c708063200"/>
+          </child>
+        </child>
       </element>
     </folder>
     <folder name="CMPaymentsCollections" id="id-b6a0e7931638458fac164ec14600560d">
