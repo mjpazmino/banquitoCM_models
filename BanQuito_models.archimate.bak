@@ -814,7 +814,7 @@ Hacia el front de Banquito, asegurados con JWT generado por CMClients</documenta
         <documentation>Módulo que permite realizar transacciones de pagos y cobros dentro del Cash Management</documentation>
       </element>
       <element xsi:type="archimate:ArchimateDiagramModel" name="CMPaymentsColletions - Business" id="id-133be49897aa436a8f2afbe2280ba8f1">
-        <child xsi:type="archimate:Group" id="id-80d886ff4af0455a9779ead8f133f1a6" name="Group" textAlignment="1" fillColor="#ffff80">
+        <child xsi:type="archimate:Group" id="id-80d886ff4af0455a9779ead8f133f1a6" name="Capa de negocio" textAlignment="1" fillColor="#ffff80">
           <bounds x="219" y="170" width="1309" height="229"/>
           <child xsi:type="archimate:DiagramObject" id="id-b712b036c1c84ea69ca275531f4bce4f" archimateElement="id-4d3b58fbee4a4405a70cb5f3e49026c7">
             <bounds x="180" y="48" width="151" height="55"/>
@@ -879,7 +879,7 @@ Hacia el front de Banquito, asegurados con JWT generado por CMClients</documenta
             <sourceConnection xsi:type="archimate:Connection" id="id-0b21de2050e445159e0f6097e1852d09" source="id-c08c33d00cb3424e8e504f114916477b" target="id-58afdcff5f7145b981bc8cdba8f4484c" archimateRelationship="id-8c15a1d8dbf6478196c8a1c6f8f934f3"/>
           </child>
         </child>
-        <child xsi:type="archimate:Group" id="id-c8a4d11b77a44427a78ce350c4239f31" name="Group" textAlignment="1" fillColor="#a7d3b8">
+        <child xsi:type="archimate:Group" id="id-c8a4d11b77a44427a78ce350c4239f31" name="Capa de tecnología" textAlignment="1" fillColor="#a7d3b8">
           <bounds x="219" y="902" width="1309" height="289"/>
           <child xsi:type="archimate:DiagramObject" id="id-04843988c8984c69ac0c31f4336834f4" targetConnections="id-5222627391dd4c429a2826ef3e88f78f" archimateElement="id-e16d14fde0e6470e99d4c0f69dcda097">
             <bounds x="276" y="192" width="120" height="55"/>
