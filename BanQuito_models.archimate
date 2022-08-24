@@ -98,9 +98,13 @@
       <documentation>Servicio que permite generar asientos contables al existir transacciones realizadas en el CoreAccounts. (Transacciones realizadas por el Microservicio PaymentsAndCollections y por el proceso de cobro de impuestos a cuentas de ahorro). &#xD;
 Generar un reporte dentro de un periodo de tiempo que refleja los asientos contables y el saldo de las cuentas de mayor que afectan. &#xD;
 </documentation>
+      <property key="URL" value="/JournalEntry"/>
+      <property key="METHODS" value="POST, GET"/>
     </element>
     <element xsi:type="archimate:ApplicationService" name="GeneralLedgerAccount" id="id-8c9b2514b5894962a594e4900b62c048">
       <documentation>Servicios que permite configurar cuentas de libro mayor necesarias para la creación de asientos contables. </documentation>
+      <property key="URL" value="/GeneralLedgerAccount"/>
+      <property key="METHODS" value="POST, GET"/>
     </element>
     <element xsi:type="archimate:DataObject" name="Data Object" id="id-d73ce83ba0e54b9e82204c90075b7c07">
       <documentation>Base de datos para la contabilidad con tablas para almacenar información de:&#xD;
@@ -245,6 +249,12 @@ Generar un reporte dentro de un periodo de tiempo que refleja los asientos conta
     </element>
     <element xsi:type="archimate:SystemSoftware" name="Cloud storage" id="id-c4c9096f6e0040369930176837fe797d">
       <documentation>Servicio de almacenamiento de archivos en línea RESTful para almacenar y acceder a datos en la infraestructura de Google cloud Platform</documentation>
+    </element>
+    <element xsi:type="archimate:SystemSoftware" name="Atlas Mongo DB" id="id-9b56dfc99b3a4feab157b35d942bfc02">
+      <documentation>Servicio de Cloud Database que permite la administración de la base de datos Accounting</documentation>
+      <property key="SUBSCRIPTION" value="FREE"/>
+      <property key="VERSION" value="4.1"/>
+      <property key="PORT" value="27017"/>
     </element>
   </folder>
   <folder name="Motivation" id="id-84681d2a4dc4479eb5e01a592be5316f" type="motivation"/>
@@ -440,6 +450,8 @@ Generar un reporte dentro de un periodo de tiempo que refleja los asientos conta
     <element xsi:type="archimate:CompositionRelationship" id="id-3d5579c324ba46efb9474dea1c060a20" source="id-f2b7b8a8010641f1ab1e16315fb51aac" target="id-ee3100eb2e474a0684dc9eefe15dd9f1"/>
     <element xsi:type="archimate:AccessRelationship" id="id-473d21b7baf345829dd4536b9bb7d6e4" source="id-c4c9096f6e0040369930176837fe797d" target="id-ee3100eb2e474a0684dc9eefe15dd9f1"/>
     <element xsi:type="archimate:AssociationRelationship" id="id-450111dadcb34d588250205ce625ddb0" source="id-7623daa2de084e9bb9ee6730fd1b1bf7" target="id-ee3100eb2e474a0684dc9eefe15dd9f1"/>
+    <element xsi:type="archimate:AssociationRelationship" id="id-68d6b57d5d3944f0939f05b857520ec9" source="id-d73ce83ba0e54b9e82204c90075b7c07" target="id-9b56dfc99b3a4feab157b35d942bfc02"/>
+    <element xsi:type="archimate:AssociationRelationship" id="id-2a99b87a29184fbfbbc8c13823683f15" source="id-eba23eebd1fc4c23b1508e964cfc9b6a" target="id-bcae1b77e00148a6bd740fcf62e67a41"/>
   </folder>
   <folder name="Views" id="id-572a85c38231403f94b07480dee333fc" type="diagrams">
     <folder name="CoreAccounts" id="id-91aefda939c54c47a71ef34be8332455">
@@ -701,6 +713,10 @@ Generar un reporte dentro de un periodo de tiempo que refleja los asientos conta
           <child xsi:type="archimate:DiagramObject" id="id-4214338d1ace444a9b69610e837dceb7" archimateElement="id-d73ce83ba0e54b9e82204c90075b7c07">
             <bounds x="48" y="36" width="120" height="55"/>
             <sourceConnection xsi:type="archimate:Connection" id="id-d1db5304b1fb4f52acc18f737670940c" source="id-4214338d1ace444a9b69610e837dceb7" target="id-8ae2f183b2354490836ba7e2ffb7e3a6" archimateRelationship="id-2cc96df725444c8e89362451f085ddde"/>
+            <sourceConnection xsi:type="archimate:Connection" id="id-784a2b0372db4c99b96125d2a21caf86" source="id-4214338d1ace444a9b69610e837dceb7" target="id-9d8370ccac5b45ffab61f90d63ebda87" archimateRelationship="id-68d6b57d5d3944f0939f05b857520ec9"/>
+          </child>
+          <child xsi:type="archimate:DiagramObject" id="id-9d8370ccac5b45ffab61f90d63ebda87" targetConnections="id-784a2b0372db4c99b96125d2a21caf86" archimateElement="id-9b56dfc99b3a4feab157b35d942bfc02">
+            <bounds x="48" y="144" width="120" height="55"/>
           </child>
         </child>
         <documentation>Módulo que permite administrar la información de la contabilidad del Cash Management</documentation>
@@ -1058,16 +1074,16 @@ Generar un reporte dentro de un periodo de tiempo que refleja los asientos conta
         <sourceConnection xsi:type="archimate:Connection" id="id-78f2677cfa0e49ca85e9f64703710358" source="id-570fb1fef9e245e2abbfe3f29e9d883a" target="id-ca49355bde2f4c6aac6394de2a64e07d" archimateRelationship="id-86da592e44474b7ab895cdb3d468ffbf"/>
         <sourceConnection xsi:type="archimate:Connection" id="id-467ee440e30b48b7bc14f2eabd3c8f87" source="id-570fb1fef9e245e2abbfe3f29e9d883a" target="id-ba4a177e01704f90b78f64162ec3d735" archimateRelationship="id-17af7f1c2c744254911ed77e1d0d410f"/>
       </child>
-      <child xsi:type="archimate:DiagramObject" id="id-ca49355bde2f4c6aac6394de2a64e07d" targetConnections="id-78f2677cfa0e49ca85e9f64703710358" archimateElement="id-bcae1b77e00148a6bd740fcf62e67a41">
+      <child xsi:type="archimate:DiagramObject" id="id-ca49355bde2f4c6aac6394de2a64e07d" targetConnections="id-78f2677cfa0e49ca85e9f64703710358 id-8c65b47a17cd4546a8338c4649d56b68" archimateElement="id-bcae1b77e00148a6bd740fcf62e67a41">
         <bounds x="132" y="216" width="120" height="55"/>
       </child>
       <child xsi:type="archimate:DiagramObject" id="id-ba4a177e01704f90b78f64162ec3d735" targetConnections="id-467ee440e30b48b7bc14f2eabd3c8f87" archimateElement="id-06a879db741b4e2bbe9e61be764e7126">
-        <bounds x="792" y="132" width="120" height="55"/>
+        <bounds x="807" y="204" width="120" height="55"/>
         <sourceConnection xsi:type="archimate:Connection" id="id-5aa8d497d1c84cfa8c4eb8efc86139d6" source="id-ba4a177e01704f90b78f64162ec3d735" target="id-714fe12480ec484c82dab9cb29b05caa" archimateRelationship="id-a28332fd07644ebba9090796477e4ec5"/>
         <sourceConnection xsi:type="archimate:Connection" id="id-94e8f3546dce42f481ce95ed51e74cf5" source="id-ba4a177e01704f90b78f64162ec3d735" target="id-ba32daf468ac4db09fbbb06fb018ba24" archimateRelationship="id-4b1abfd37f9a4eb7a38a96c9f09e7208"/>
       </child>
       <child xsi:type="archimate:DiagramObject" id="id-714fe12480ec484c82dab9cb29b05caa" targetConnections="id-5aa8d497d1c84cfa8c4eb8efc86139d6" archimateElement="id-d4d779502bc042f881699f9fe91cb906">
-        <bounds x="600" y="120" width="120" height="55"/>
+        <bounds x="612" y="108" width="120" height="55"/>
         <sourceConnection xsi:type="archimate:Connection" id="id-6977bd2e67574e1aac8b5c6f8ee3fd9b" source="id-714fe12480ec484c82dab9cb29b05caa" target="id-570fb1fef9e245e2abbfe3f29e9d883a" archimateRelationship="id-727cccdf40ee46fca3821d251791f9ed"/>
       </child>
       <child xsi:type="archimate:DiagramObject" id="id-ba32daf468ac4db09fbbb06fb018ba24" targetConnections="id-94e8f3546dce42f481ce95ed51e74cf5" archimateElement="id-f748de32cae54534aeb825c8be56032d">
@@ -1076,7 +1092,8 @@ Generar un reporte dentro de un periodo de tiempo que refleja los asientos conta
         <sourceConnection xsi:type="archimate:Connection" id="id-5e16dbf3929647d3852d2dfa1228170b" source="id-ba32daf468ac4db09fbbb06fb018ba24" target="id-570fb1fef9e245e2abbfe3f29e9d883a" archimateRelationship="id-56e75d128c674dd881b561b37cae47ef"/>
       </child>
       <child xsi:type="archimate:DiagramObject" id="id-0f01376116c04c70b7d2d3df51d28c43" targetConnections="id-6f58c53f86904b22957e38936938a48b" archimateElement="id-eba23eebd1fc4c23b1508e964cfc9b6a">
-        <bounds x="456" y="360" width="120" height="55"/>
+        <bounds x="408" y="360" width="120" height="55"/>
+        <sourceConnection xsi:type="archimate:Connection" id="id-8c65b47a17cd4546a8338c4649d56b68" source="id-0f01376116c04c70b7d2d3df51d28c43" target="id-ca49355bde2f4c6aac6394de2a64e07d" archimateRelationship="id-2a99b87a29184fbfbbc8c13823683f15"/>
       </child>
     </element>
   </folder>
