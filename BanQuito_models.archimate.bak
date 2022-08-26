@@ -15,7 +15,9 @@
       <documentation>Eventos que involucran transacciones entre cuentas del banco (Pagos, Cobros, Intereses)</documentation>
       <property key="TYPE" value="PAYMENTS, COLLECTION"/>
     </element>
-    <element xsi:type="archimate:BusinessActor" name="Usuario Cash Management" id="id-137ce330ff924cc2ac3ddc09f6fa566d"/>
+    <element xsi:type="archimate:BusinessActor" name="Usuario Cash Management" id="id-137ce330ff924cc2ac3ddc09f6fa566d">
+      <documentation>Usuario </documentation>
+    </element>
     <element xsi:type="archimate:BusinessRole" name="Administrador" id="id-1e40cab06c2d4786956d2d58e360e088">
       <property key="Roles" value="Administrador"/>
     </element>
@@ -140,12 +142,13 @@ Generar un reporte dentro de un periodo de tiempo que refleja los asientos conta
 </documentation>
       <property key="URL" value="/JournalEntry"/>
       <property key="METHODS" value="POST, GET"/>
-      <property/>
+      <property key="VERSION" value="1"/>
     </element>
     <element xsi:type="archimate:ApplicationService" name="GeneralLedgerAccount" id="id-8c9b2514b5894962a594e4900b62c048">
       <documentation>Servicios que permite configurar cuentas de libro mayor necesarias para la creación de asientos contables. </documentation>
       <property key="URL" value="/GeneralLedgerAccount"/>
       <property key="METHODS" value="POST, GET"/>
+      <property key="VERSION" value="1"/>
     </element>
     <element xsi:type="archimate:DataObject" name="Data Object" id="id-d73ce83ba0e54b9e82204c90075b7c07">
       <documentation>Base de datos para la contabilidad con tablas para almacenar información de:&#xD;
@@ -198,16 +201,20 @@ Generar un reporte dentro de un periodo de tiempo que refleja los asientos conta
     </element>
     <element xsi:type="archimate:ApplicationService" name="Payment Order" id="id-68f5c29d5de146ab8811bf2acacf8318"/>
     <element xsi:type="archimate:ApplicationComponent" name="BanQuito-Front" id="id-8fed5e876e364325a9a9770589830186">
-      <documentation>APlicac</documentation>
+      <documentation>Aplicación Front</documentation>
     </element>
     <element xsi:type="archimate:ApplicationFunction" name="Crear Asiento Contable" id="id-08541340e52c4ae993d94fc40df2dd33">
       <documentation>Creación de Asiento Contable de la transacción realizada (Pagos, Cobros)</documentation>
+      <property key="METHODS" value="createJournalEntries"/>
+      <property key="VERSION" value="1"/>
     </element>
     <element xsi:type="archimate:ApplicationFunction" name="Generar Reporte" id="id-3e446f39cb9c4cd4b20e39565f2961d4">
       <documentation>Función para generar un Reporte de Libro Mayor, se visualiza las cuentas afectadas por cada asiento contable dentro de un periodo de tiempo</documentation>
+      <property key="METHODS"/>
     </element>
     <element xsi:type="archimate:ApplicationFunction" name="Afectar Cuenta de Mayor" id="id-7e2405ab1fdd4559a48091728981bcdd">
       <documentation>Afectar balance en las cuentas de mayor que intrvienen en un asiento contable</documentation>
+      <property key="TYPE_ACCOUNT" value="ASSETS, EXPENSES, INCOME"/>
     </element>
     <element xsi:type="archimate:ApplicationFunction" name="Configurar cobro" id="id-db6af4df557948b8a45d4c641b133a6a"/>
     <element xsi:type="archimate:ApplicationService" name="Collection" id="id-1aa2ba81984842b584516489f14e73aa"/>
